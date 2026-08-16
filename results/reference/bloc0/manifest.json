@@ -1,0 +1,69 @@
+{
+  "block": "bloc0",
+  "status": "success",
+  "error": null,
+  "timestamp_utc": "2026-08-16T15:49:49.802837+00:00",
+  "duration_s": 5.17,
+  "git": {
+    "commit": "1ddd9f1b5a078ccb8e99a553fc98656c954422d4",
+    "branch": "main",
+    "clean_tree": true,
+    "modified_sources": []
+  },
+  "config": {
+    "name": "reference",
+    "file": "config/default.yaml",
+    "sha256": "45e5efc8782a380fcafab54e26af2dbcccd19648b572179d91f9ae3f2548f3a2"
+  },
+  "physical_parameters": {
+    "mu_ratio": 6.5,
+    "rho_ratio": 3.12,
+    "visc_ratio": 0.1,
+    "phi": 0.5,
+    "e_over_h": 2.0,
+    "delta": 0.0,
+    "N_modes": 15,
+    "p_large": 1000000000000.0,
+    "solveur": "fem",
+    "fem_L": 6.0,
+    "fem_raffinement": 2
+  },
+  "block_parameters": {},
+  "environment": {
+    "python": "3.13.6",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "values": {},
+  "outputs": [
+    {
+      "file": "figures/fig01_geometrie_reelle.pdf",
+      "type": "figure",
+      "sha256": "8e11e569de123ab22d422a01cf05fce20617006888bf88358925b754500b7bba",
+      "bytes": 18258
+    },
+    {
+      "file": "figures/fig02_cellule_elementaire.pdf",
+      "type": "figure",
+      "sha256": "03958ecaaa51136eca9145672ce93e0703a64713597805e0d57e052c2153dc84",
+      "bytes": 27288
+    },
+    {
+      "file": "figures/fig03_interface_homogeneisee.pdf",
+      "type": "figure",
+      "sha256": "c6f67bfe5f4ad5c2bef6a49124681c0f9c8fa8ffe056972d20ea081b23e59e30",
+      "bytes": 24321
+    },
+    {
+      "file": "figures/fig04_passage_schema.pdf",
+      "type": "figure",
+      "sha256": "f9ce833e52b85be5b4441fa7b3970d9036c63d468c3b1e07e8f1fa24f9f376c8",
+      "bytes": 22792
+    }
+  ],
+  "notes": [
+    "Purely geometric schematics: no physical computation."
+  ]
+}
