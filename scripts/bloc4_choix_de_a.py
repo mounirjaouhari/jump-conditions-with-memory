@@ -1,6 +1,6 @@
 """Block 4 — Influence of the parameter a (interface thickness).
 
-Produces: fig08_energie_passivite.pdf, fig11_error_vs_a_over_e.pdf
+Produces: fig08_energie_passivite.pdf, fig11_erreur_vs_a_over_e.pdf
 Data: results/<config>/bloc4/*.csv + manifest.json
 
     python run.py bloc4 [--config config/xxx.yaml]
@@ -152,7 +152,7 @@ def main(cfg=None):
             ax.legend(fontsize=9)
             ax.grid(True, alpha=0.3, which="both")
         fig.tight_layout()
-        run.figure(fig, "fig11_error_vs_a_over_e.pdf")
+        run.figure(fig, "fig11_erreur_vs_a_over_e.pdf")
         plt.close(fig)
 
         run.table("erreur_vs_a", colonnes)

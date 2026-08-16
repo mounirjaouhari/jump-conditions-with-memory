@@ -1,8 +1,8 @@
 """Block 8 — Fields: the choice of the thickness a, seen on the field itself.
 
-Produces: fig18_fields.pdf       (actual field + model error, a = e, oblique)
-          fig19_field_vs_a.pdf   (actual vs homogenized field for a = 0, e, 2e)
-          fig20_error_H1_vs_a.pdf (H¹ deviation as a function of a/e, near/far)
+Produces: fig18_champs.pdf       (actual field + model error, a = e, oblique)
+          fig19_champ_vs_a.pdf   (actual vs homogenized field for a = 0, e, 2e)
+          fig20_erreur_H1_vs_a.pdf (H¹ deviation as a function of a/e, near/far)
 Data    : results/<config>/bloc8/*.csv + manifest.json
 
 WHAT THESE FIGURES SHOW
@@ -158,7 +158,7 @@ def main(cfg=None):
                      r"are the inclusions, the white band the effective interface",
                      fontsize=10, y=1.03)
         fig.tight_layout()
-        run.figure(fig, "fig18_fields.pdf")
+        run.figure(fig, "fig18_champs.pdf")
         plt.close(fig)
 
         # =====================================================================
@@ -215,7 +215,7 @@ def main(cfg=None):
         fig.suptitle(rf"Actual and homogenized fields, $kh = {kh}$, "
                      rf"$\theta = {b['theta_deg']}^\circ$ ; only $a = e$ reproduces the field",
                      fontsize=10, y=1.02)
-        run.figure(fig, "fig19_field_vs_a.pdf")
+        run.figure(fig, "fig19_champ_vs_a.pdf")
         plt.close(fig)
 
         # =====================================================================
@@ -264,7 +264,7 @@ def main(cfg=None):
         fig.suptitle(r"The deviation from the actual field is minimal at $a = e$, "
                      r"for all frequencies", fontsize=11, y=1.0)
         fig.tight_layout()
-        run.figure(fig, "fig20_error_H1_vs_a.pdf")
+        run.figure(fig, "fig20_erreur_H1_vs_a.pdf")
         plt.close(fig)
 
 
