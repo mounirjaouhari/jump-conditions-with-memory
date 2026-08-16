@@ -1,0 +1,113 @@
+{
+  "block": "bloc3",
+  "status": "success",
+  "error": null,
+  "timestamp_utc": "2026-08-16T15:54:43.645316+00:00",
+  "duration_s": 27.73,
+  "git": {
+    "commit": "40904ad8998170392018016ff91a52246ebe5054",
+    "branch": "main",
+    "clean_tree": true,
+    "modified_sources": []
+  },
+  "config": {
+    "name": "reference",
+    "file": "config/default.yaml",
+    "sha256": "45e5efc8782a380fcafab54e26af2dbcccd19648b572179d91f9ae3f2548f3a2"
+  },
+  "physical_parameters": {
+    "mu_ratio": 6.5,
+    "rho_ratio": 3.12,
+    "visc_ratio": 0.1,
+    "phi": 0.5,
+    "e_over_h": 2.0,
+    "delta": 0.0,
+    "N_modes": 15,
+    "p_large": 1000000000000.0,
+    "solveur": "fem",
+    "fem_L": 6.0,
+    "fem_raffinement": 2
+  },
+  "block_parameters": {
+    "kh_min": 0.01,
+    "kh_max": 0.5,
+    "n_kh": 50,
+    "theta": 0.0,
+    "kh_ordres": [
+      0.05,
+      0.1,
+      0.2
+    ]
+  },
+  "environment": {
+    "python": "3.13.6",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "values": {
+    "troncatureScattering": {
+      "value": 1.6617403854002344e-05,
+      "description": "deviation on |R| between truncations X=2 and X=3 (kh = 0.26)",
+      "fmt": "%.1e"
+    },
+    "ERmemMax": {
+      "value": 0.029489616511184022,
+      "description": "max relative error on |R|, memory model",
+      "fmt": "%.2e"
+    },
+    "ERinstMax": {
+      "value": 0.034603650517778924,
+      "description": "max relative error on |R|, instantaneous model",
+      "fmt": "%.2e"
+    },
+    "khMax": {
+      "value": 0.5,
+      "description": "upper bound of the kh sweep",
+      "fmt": "%.2f"
+    },
+    "ordreKhPetit": {
+      "value": 1.9872709362770735,
+      "description": "local order of E_R (memory), log-log slope between kh = 0.03 and 0.05",
+      "fmt": "%.2f"
+    },
+    "ordreKhMoyen": {
+      "value": 1.9567994167754872,
+      "description": "local order of E_R (memory), log-log slope between kh = 0.05 and 0.1",
+      "fmt": "%.2f"
+    },
+    "ordreKhGrand": {
+      "value": 1.8397835239435363,
+      "description": "local order of E_R (memory), log-log slope between kh = 0.1 and 0.2",
+      "fmt": "%.2f"
+    },
+    "khOrdreMin": {
+      "value": 0.05,
+      "description": "smallest kh where the local order is measured",
+      "fmt": "%g"
+    },
+    "khOrdreMax": {
+      "value": 0.2,
+      "description": "largest kh where the local order is measured",
+      "fmt": "%g"
+    }
+  },
+  "outputs": [
+    {
+      "file": "results/reference/bloc3/RT_vs_kh.csv",
+      "type": "data",
+      "sha256": "47859f5929b961fac8cba44734ee77417cd9b9df2cc1a09f425a9d417aa92591",
+      "bytes": 7260
+    },
+    {
+      "file": "figures/fig09_RT_vs_kh.pdf",
+      "type": "figure",
+      "sha256": "bcdac3f89a9f4a5868e07bd1375f3606869eac7dd65f2ae25587bae36668b159",
+      "bytes": 32919
+    }
+  ],
+  "notes": [
+    "Reference = FEM solution of the inclusion problem (D1 closed). Normal incidence: C plays no role, only B and S are validated."
+  ]
+}

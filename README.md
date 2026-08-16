@@ -29,24 +29,26 @@ which, after homogenization, makes the interface **hereditary**.
 **The model** (*formal derivation*, matched asymptotics in the Laplace
 variable $p$). In the Laplace domain the jump conditions are algebraic,
 
-$$
-[\![\widehat U]\!]_a = h\,B(p,a)\,\langle \partial_{X_1}\widehat U\rangle_a,
-\qquad
-[\![\widehat\Sigma_1]\!]_a = h\,S(a)\,\langle \widehat{\operatorname{div}\Sigma}\rangle_a
- - h\,C(p,a)\,\langle \partial_{X_2}\widehat\Sigma_2\rangle_a ,
-$$
+```math
+[\![\,\widehat U\,]\!]_a = h\,B(p,a)\,\langle \partial_{X_1}\widehat U\rangle_a
+```
+```math
+[\![\,\widehat\Sigma_1\,]\!]_a = h\,S(a)\,\langle \widehat{\mathrm{div}\,\Sigma}\rangle_a
+ - h\,C(p,a)\,\langle \partial_{X_2}\widehat\Sigma_2\rangle_a
+```
 
 and back in time they combine instantaneous averages with convolutions
 against two causal memory kernels ($B^v = C^v = 0$ for $\varphi < 1$):
 
-$$
-[\![U]\!]_a = h\,B^{e}\langle \partial_{x_1}U\rangle_a
- + h\!\int_0^t K_B(t{-}s)\,\langle \partial_{x_1}\dot U(s)\rangle_a\,ds,
-\qquad
-[\![\Sigma_1]\!]_a = h\,S\langle \operatorname{div}\Sigma\rangle_a
+```math
+[\![\,U\,]\!]_a = h\,B^{e}\langle \partial_{x_1}U\rangle_a
+ + h\int_0^t K_B(t-s)\,\langle \partial_{x_1}\dot U(s)\rangle_a\,ds
+```
+```math
+[\![\,\Sigma_1\,]\!]_a = h\,S\,\langle \mathrm{div}\,\Sigma\rangle_a
  - h\,C^{e}\langle \partial_{x_2}\Sigma_2\rangle_a
- - h\!\int_0^t K_C(t{-}s)\,\langle \partial_{x_2}\dot\Sigma_2(s)\rangle_a\,ds .
-$$
+ - h\int_0^t K_C(t-s)\,\langle \partial_{x_2}\dot\Sigma_2(s)\rangle_a\,ds
+```
 
 **The pivot** (*proved*): the cell solution depends on $p$ only through the
 complex modulus contrast $r(p) = M_i(p)/M_m(p) = \mu_i/(\mu_m + p\beta_m)$,

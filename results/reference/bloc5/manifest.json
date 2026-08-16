@@ -1,0 +1,148 @@
+{
+  "block": "bloc5",
+  "status": "success",
+  "error": null,
+  "timestamp_utc": "2026-08-16T15:55:37.770820+00:00",
+  "duration_s": 56.53,
+  "git": {
+    "commit": "40904ad8998170392018016ff91a52246ebe5054",
+    "branch": "main",
+    "clean_tree": true,
+    "modified_sources": []
+  },
+  "config": {
+    "name": "reference",
+    "file": "config/default.yaml",
+    "sha256": "45e5efc8782a380fcafab54e26af2dbcccd19648b572179d91f9ae3f2548f3a2"
+  },
+  "physical_parameters": {
+    "mu_ratio": 6.5,
+    "rho_ratio": 3.12,
+    "visc_ratio": 0.1,
+    "phi": 0.5,
+    "e_over_h": 2.0,
+    "delta": 0.0,
+    "N_modes": 15,
+    "p_large": 1000000000000.0,
+    "solveur": "fem",
+    "fem_L": 6.0,
+    "fem_raffinement": 2
+  },
+  "block_parameters": {
+    "dt": 0.05,
+    "t_end": 100.0,
+    "t0": 35.0,
+    "tau0": 10.0,
+    "omega0": 0.25,
+    "kh_max_modele": 0.8,
+    "seuil_spectre": 0.001,
+    "visc_ratio_fort": 3.0,
+    "visc_ratios": [
+      0.01,
+      0.03,
+      0.1,
+      0.3,
+      1.0,
+      3.0
+    ]
+  },
+  "environment": {
+    "python": "3.13.6",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "values": {
+    "tauZero": {
+      "value": 10.0,
+      "description": "width of the Gaussian pulse",
+      "fmt": "%g"
+    },
+    "omegaZero": {
+      "value": 0.25,
+      "description": "carrier angular frequency of the pulse",
+      "fmt": "%g"
+    },
+    "khMaxModele": {
+      "value": 0.8,
+      "description": "kh bound of the validity domain of the first-order model",
+      "fmt": "%g"
+    },
+    "fractionHorsBande": {
+      "value": 2.650261006976433e-08,
+      "description": "fraction of the pulse spectral energy outside kh <= kh_max_modele",
+      "fmt": "%.1e"
+    },
+    "ERtransMemoire": {
+      "value": 2.2983005622736528,
+      "description": "L2 error (%) of the memory model on the reflected signal",
+      "fmt": "%.2f"
+    },
+    "ERtransProny": {
+      "value": 2.298588919046145,
+      "description": "L2 error (%) of the approximated memory model (Prony N=3)",
+      "fmt": "%.2f"
+    },
+    "ERtransInstantane": {
+      "value": 2.748416535829278,
+      "description": "L2 error (%) of the instantaneous model on the reflected signal",
+      "fmt": "%.1f"
+    },
+    "gainTransitoire": {
+      "value": 1.1958473060243855,
+      "description": "gain of the memory in the transient regime",
+      "fmt": "%.1f"
+    },
+    "ERtransMemoireFort": {
+      "value": 1.946221228510351,
+      "description": "error (%) of the memory model, viscous matrix (ωβ/μ = 3.0)",
+      "fmt": "%.1f"
+    },
+    "ERtransInstantaneFort": {
+      "value": 17.024540290184735,
+      "description": "error (%) of the instantaneous model, viscous matrix (ωβ/μ = 3.0)",
+      "fmt": "%.0f"
+    },
+    "viscRatioFort": {
+      "value": 3.0,
+      "description": "viscosity of the 'dissipative matrix' case",
+      "fmt": "%g"
+    }
+  },
+  "outputs": [
+    {
+      "file": "results/reference/bloc5/signaux_temporels.csv",
+      "type": "data",
+      "sha256": "aeb7b6fa4d16417c1ff21b9da4766acc3c358e89944d24b9068abdc9326ec81c",
+      "bytes": 165382
+    },
+    {
+      "file": "results/reference/bloc5/spectres_reflexion.csv",
+      "type": "data",
+      "sha256": "211c452c674443d5af9a78b178772093c5914c3e9afc5220d53c336c97e9bb8c",
+      "bytes": 855
+    },
+    {
+      "file": "figures/fig12_signaux_temporels.pdf",
+      "type": "figure",
+      "sha256": "3747a67f9d7ec673d6bb358d14b07e954e4c7d9e8ceba36816734f0290361e1e",
+      "bytes": 36231
+    },
+    {
+      "file": "results/reference/bloc5/influence_viscosite.csv",
+      "type": "data",
+      "sha256": "e481e2a5d76efc918f03fa74aa5e2aed5b8d679be3919a41285251baa5ef1fc5",
+      "bytes": 215
+    },
+    {
+      "file": "figures/fig13_spectres.pdf",
+      "type": "figure",
+      "sha256": "99ff6ce362f0713892c9a145e38c81f12ebeb5aff8578f918bfe67d0177d677e",
+      "bytes": 33713
+    }
+  ],
+  "notes": [
+    "12 frequencies retained in [0, 0.8] (threshold 0.001 of the spectrum maximum)"
+  ]
+}
