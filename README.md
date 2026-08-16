@@ -1,6 +1,6 @@
 # Jump conditions with memory
 
-[![DOI](https://zenodo.org/badge/1335391702.svg)](https://doi.org/10.5281/zenodo.21968230)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21968230.svg)](https://doi.org/10.5281/zenodo.21968230)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Reproducible computational pipeline for the article
