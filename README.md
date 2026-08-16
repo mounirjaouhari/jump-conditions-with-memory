@@ -1,5 +1,8 @@
 # Jump conditions with memory
 
+[![DOI](https://zenodo.org/badge/1335391702.svg)](https://doi.org/10.5281/zenodo.21968230)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Reproducible computational pipeline for the article
 
 > **Jump conditions with memory for the dynamic homogenization of a thin row
@@ -187,7 +190,9 @@ docs/                   ARCHITECTURE.md and REPRODUCIBILITY.md
 
 See [`CITATION.cff`](CITATION.cff) (GitHub's “Cite this repository” button).
 Please cite the companion article once published; until then, cite this
-repository and its archived release (DOI on Zenodo).
+repository and its archived release:
+DOI [10.5281/zenodo.21968230](https://doi.org/10.5281/zenodo.21968230)
+(all versions; v1.0.0 is 10.5281/zenodo.21968231).
 
 ## License
 
