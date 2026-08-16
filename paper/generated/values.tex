@@ -1,0 +1,123 @@
+% =============================================================
+% GENERATED FILE — DO NOT EDIT BY HAND
+% =============================================================
+% Produced by:  python run.py export
+% Configuration: reference
+% Commits that produced these values: 6973866f
+%
+% Every numerical value quoted in the article must come from here.
+% In the manuscript:  \input{generated/values.tex}  then  $B^e = \FMBe$
+% =============================================================
+
+% --- bloc1 (commit 6973866f) ----------------------------------------
+\newcommand{\FMBZero}{0.5839}  % B(0, a=e) — static limit
+\newcommand{\FMBe}{0.584}  % B^e: instantaneous elastic part
+\newcommand{\FMBunFem}{-1.4161}  % B_1(0) by finite elements
+\newcommand{\FMBunModal}{-1.4154}  % B_1(0) by modal matching (Marigo, appendix B.1)
+\newcommand{\FMBv}{3.661 \cdot 10^{-12}}  % B^v: instantaneous viscosity
+\newcommand{\FMCZero}{3.579}  % C(0, a=e) — static limit
+\newcommand{\FMCe}{3.579}  % C^e: instantaneous elastic part
+\newcommand{\FMCv}{-3.494 \cdot 10^{-12}}  % C^v: instantaneous viscosity
+\newcommand{\FMS}{4.12}  % S(a=e) — inertial coefficient
+\newcommand{\FMborneMarigoB}{0.533}  % Marigo (2017) lower bound on B^e, a = e
+\newcommand{\FMborneMarigoC}{3.467}  % Marigo (2017) lower bound on C^e, a = e
+\newcommand{\FMbornePositiviteA}{0.71}  % a/e positivity threshold of the interface energy (max of the B, C and S thresholds)
+\newcommand{\FMecartModalFem}{0.05}  % deviation (%) between the two methods
+\newcommand{\FMminReB}{0.584}  % min Re B(p) on the right half-plane
+\newcommand{\FMminReC}{1.382}  % min Re C(p) on the right half-plane
+\newcommand{\FMvalidContrasteNul}{4 \cdot 10^{-11}}  % no-contrast residual: max(|B_1|, |C_2|), M_i = M_m
+\newcommand{\FMvalidIdentiteB}{9 \cdot 10^{-11}}  % max residual of the energy identity (48)-(49), complex r
+\newcommand{\FMvalidIdentiteC}{10^{-14}}  % max residual of the energy identity (53), complex r
+\newcommand{\FMvalidMaillage}{3 \cdot 10^{-4}}  % deviation on B_1 between two mesh refinements
+\newcommand{\FMvalidPleine}{3 \cdot 10^{-11}}  % full-layer residual: |B_1 − (M_m/M_i − 1)e/h|, φ = 1
+\newcommand{\FMvalidReciprocite}{10^{-14}}  % reciprocity lemma residual |B_2 + C_1|
+\newcommand{\FMvalidTroncature}{8 \cdot 10^{-9}}  % deviation on B_1 between truncations L = 4 and L = 20
+
+% --- bloc10 (commit 6973866f) ----------------------------------------
+\newcommand{\FMcellConvEcartFin}{1.2 \cdot 10^{-4}}  % deviation of B1 between the two finest cell meshes
+\newcommand{\FMcellConvOrdre}{2.98}  % observed order of mesh convergence of the cell problem (B1, limited by the corner singularities)
+\newcommand{\FMplancherMesure}{2.5 \cdot 10^{-4}}  % MEASURED precision floor of the production reference (worst relative deviation of R from the overkill solution)
+\newcommand{\FMrefConvOrdreMaille}{1.93}  % observed order of mesh convergence of the reference solver (log-log fit, refinements 1 to 3, median over (kh, θ))
+\newcommand{\FMrefDegradeX}{3.7 \cdot 10^{-3}}  % worst relative deviation of |R| between X = 4 and 6 (the geometrically coarsened far field degrades |R| as X grows: X = 3 is an optimum)
+\newcommand{\FMrefTroncProd}{2.1 \cdot 10^{-4}}  % worst relative deviation of |R| between X = 2 and 3 at the production mesh (truncation sensitivity)
+
+% --- bloc2 (commit 6973866f) ----------------------------------------
+\newcommand{\FMKBzero}{3.661}  % K_B(0+) = B(+∞) − B^e: jump of the kernel at the origin
+\newcommand{\FMKCzero}{-3.494}  % K_C(0+) = C(+∞) − C^e
+\newcommand{\FMlambdaRelax}{10.0}  % λ = μ_m/β_m: relaxation rate of the matrix
+\newcommand{\FMpassiviteMinB}{5.93 \cdot 10^{-4}}  % min Re(p K̂_B) ≥ 0 — normal coefficient B
+\newcommand{\FMpassiviteMinC}{8.24 \cdot 10^{-4}}  % min Re(−p K̂_C) ≥ 0 — transverse coefficient C
+\newcommand{\FMpronyNExp}{3}  % number of internal variables
+\newcommand{\FMpronyResiduB}{2.7 \cdot 10^{-7}}  % relative residual of the K_B fit
+\newcommand{\FMpronyResiduC}{9.1 \cdot 10^{-8}}  % relative residual of the K_C fit
+\newcommand{\FMsecteurMinB}{0.0603}  % min of Re[e^{-i arg p} M_m/B] over the half-plane grid
+\newcommand{\FMsecteurMinC}{0.21}  % min of Re[e^{-i arg p} M_m C] over the half-plane grid
+\newcommand{\FMsecteurNbPoints}{40}  % size of the (σ, ω) grid of the right half-plane
+\newcommand{\FMsecteurOmegaMax}{100}  % largest ordinate ω of the grid
+\newcommand{\FMsecteurSigmaMax}{100}  % largest abscissa σ of the grid
+
+% --- bloc3 (commit 6973866f) ----------------------------------------
+\newcommand{\FMERinstMax}{3.46 \cdot 10^{-2}}  % max relative error on |R|, instantaneous model
+\newcommand{\FMERmemMax}{2.95 \cdot 10^{-2}}  % max relative error on |R|, memory model
+\newcommand{\FMkhMax}{0.50}  % upper bound of the kh sweep
+\newcommand{\FMkhOrdreMax}{0.2}  % largest kh where the local order is measured
+\newcommand{\FMkhOrdreMin}{0.05}  % smallest kh where the local order is measured
+\newcommand{\FMordreKhGrand}{1.84}  % local order of E_R (memory), log-log slope between kh = 0.1 and 0.2
+\newcommand{\FMordreKhMoyen}{1.96}  % local order of E_R (memory), log-log slope between kh = 0.05 and 0.1
+\newcommand{\FMordreKhPetit}{1.99}  % local order of E_R (memory), log-log slope between kh = 0.03 and 0.05
+\newcommand{\FMtroncatureScattering}{1.7 \cdot 10^{-5}}  % deviation on |R| between truncations X=2 and X=3 (kh = 0.26)
+
+% --- bloc4 (commit 6973866f) ----------------------------------------
+\newcommand{\FMaOptimalOrdre}{1.00}  % a/e achieving this maximum order
+\newcommand{\FMordreMaxEnA}{1.94}  % maximum convergence order over the a sweep
+\newcommand{\FMplancherReference}{2.5 \cdot 10^{-4}}  % precision floor of the reference solver (relative error on R, measured by block 10)
+
+% --- bloc5 (commit 6973866f) ----------------------------------------
+\newcommand{\FMERtransInstantane}{2.7}  % L2 error (%) of the instantaneous model on the reflected signal
+\newcommand{\FMERtransInstantaneFort}{17}  % error (%) of the instantaneous model, viscous matrix (ωβ/μ = 3.0)
+\newcommand{\FMERtransMemoire}{2.30}  % L2 error (%) of the memory model on the reflected signal
+\newcommand{\FMERtransMemoireFort}{1.9}  % error (%) of the memory model, viscous matrix (ωβ/μ = 3.0)
+\newcommand{\FMERtransProny}{2.30}  % L2 error (%) of the approximated memory model (Prony N=3)
+\newcommand{\FMfractionHorsBande}{2.7 \cdot 10^{-8}}  % fraction of the pulse spectral energy outside kh <= kh_max_modele
+\newcommand{\FMgainTransitoire}{1.2}  % gain of the memory in the transient regime
+\newcommand{\FMkhMaxModele}{0.8}  % kh bound of the validity domain of the first-order model
+\newcommand{\FMomegaZero}{0.25}  % carrier angular frequency of the pulse
+\newcommand{\FMtauZero}{10}  % width of the Gaussian pulse
+\newcommand{\FMviscRatioFort}{3}  % viscosity of the 'dissipative matrix' case
+
+% --- bloc6 (commit 6973866f) ----------------------------------------
+\newcommand{\FMCeHerite}{13.0}  % C^e from the legacy code (counter-example: a wrong C is worse than C = 0)
+\newcommand{\FMCek}{3.579}  % C^e used (computed by finite elements)
+\newcommand{\FMerreurAvecCMediane}{7 \cdot 10^{-3}}  % median error of the complete model at oblique incidence (all angles, all kh)
+\newcommand{\FMerreurCFauxPct}{231}  % max error (%) with the wrong legacy C^e, θ = 45°
+\newcommand{\FMerreurCNulPct}{88}  % max error (%) with C = 0, θ = 45°
+\newcommand{\FMerreurSansCMax}{2.1}  % largest relative error observed with C = 0
+\newcommand{\FMerreurSansCMin}{0.2}  % smallest relative error observed with C = 0
+\newcommand{\FMgainCMax}{94}  % maximal error factor if C is omitted
+\newcommand{\FMordreObliqueMin}{1.99}  % minimal convergence order at oblique incidence
+
+% --- bloc7 (commit 6973866f) ----------------------------------------
+\newcommand{\FMKBzeroInvariant}{3.661}  % K_B(0+), invariant with respect to the viscosity
+\newcommand{\FMgainMemoireMax}{36.7}  % maximal memory gain over the viscosity sweep
+\newcommand{\FMgainMemoireMin}{1.00}  % memory gain at the smallest ω/λ of the sweep
+\newcommand{\FMgainMemoireReference}{1.21}  % memory gain, test case of the paper
+\newcommand{\FMomegaLambdaMax}{3}  % largest ratio ω/λ of the sweep
+\newcommand{\FMomegaLambdaMin}{3 \cdot 10^{-4}}  % smallest ratio ω/λ of the sweep
+\newcommand{\FMregimeBalayagesMax}{0.05}  % bound on ωβ_m/μ_m over the harmonic sweeps of the test case
+\newcommand{\FMviscRatioGainMax}{10}  % viscosity achieving this maximal gain
+
+% --- bloc8 (commit 6973866f) ----------------------------------------
+\newcommand{\FMaOptimalChamp}{1.00}  % a/e minimizing the H¹ deviation (near field)
+\newcommand{\FMchampErreurAvecC}{3.2 \cdot 10^{-2}}  % L2 error on the field, complete model
+\newcommand{\FMchampErreurSansC}{0.28}  % L2 error on the field, C omitted
+\newcommand{\FMecartHunADeuxe}{33}  % H¹ deviation (%) near field, a = 2 e
+\newcommand{\FMecartHunAe}{8}  % H¹ deviation (%) near field, a = 1 e
+\newcommand{\FMecartHunAzero}{47}  % H¹ deviation (%) near field, a = 0 e
+
+% --- bloc9 (commit 6973866f) ----------------------------------------
+\newcommand{\FMherglotzResidu}{1.1 \cdot 10^{-10}}  % max relative deviation of the Herglotz identity (Im B, Im C)
+\newcommand{\FMstieltjesEta}{0.08}  % smoothing η of the Stieltjes–Perron inversion
+\newcommand{\FMstieltjesMuMin}{6.31 \cdot 10^{-5}}  % min of the Stieltjes density μ'(z) — positivity (passivity)
+\newcommand{\FMstieltjesNbZ}{275}  % number of points of the z grid
+\newcommand{\FMstieltjesReconErrMax}{4.0}  % max relative deviation (%) reconstruction from μ vs direct G
+

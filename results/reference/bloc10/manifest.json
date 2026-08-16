@@ -1,0 +1,136 @@
+{
+  "block": "bloc10",
+  "status": "success",
+  "error": null,
+  "timestamp_utc": "2026-08-16T16:09:44.302765+00:00",
+  "duration_s": 49.37,
+  "git": {
+    "commit": "6973866f348739726f5a41bd1359aa5a8f1581c1",
+    "branch": "main",
+    "clean_tree": true,
+    "modified_sources": []
+  },
+  "config": {
+    "name": "reference",
+    "file": "config/default.yaml",
+    "sha256": "45e5efc8782a380fcafab54e26af2dbcccd19648b572179d91f9ae3f2548f3a2"
+  },
+  "physical_parameters": {
+    "mu_ratio": 6.5,
+    "rho_ratio": 3.12,
+    "visc_ratio": 0.1,
+    "phi": 0.5,
+    "e_over_h": 2.0,
+    "delta": 0.0,
+    "N_modes": 15,
+    "p_large": 1000000000000.0,
+    "solveur": "fem",
+    "fem_L": 6.0,
+    "fem_raffinement": 2
+  },
+  "block_parameters": {
+    "raffinements": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "X_values": [
+      2.0,
+      3.0,
+      4.0,
+      6.0
+    ],
+    "kh_values": [
+      0.05,
+      0.2,
+      0.4
+    ],
+    "theta_deg": [
+      0.0,
+      45.0
+    ],
+    "raffinement_ref": 5,
+    "raffinement_production": 2,
+    "X_production": 3.0,
+    "bruit_fit": 1e-12,
+    "cell_raffinements": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "environment": {
+    "python": "3.13.6",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "values": {
+    "refConvOrdreMaille": {
+      "value": 1.9323100630956551,
+      "description": "observed order of mesh convergence of the reference solver (log-log fit, refinements 1 to 3, median over (kh, θ))",
+      "fmt": "%.2f"
+    },
+    "refTroncProd": {
+      "value": 0.0002146131496127466,
+      "description": "worst relative deviation of |R| between X = 2 and 3 at the production mesh (truncation sensitivity)",
+      "fmt": "%.1e"
+    },
+    "refDegradeX": {
+      "value": 0.003715175208396057,
+      "description": "worst relative deviation of |R| between X = 4 and 6 (the geometrically coarsened far field degrades |R| as X grows: X = 3 is an optimum)",
+      "fmt": "%.1e"
+    },
+    "plancherMesure": {
+      "value": 0.0002494215296474987,
+      "description": "MEASURED precision floor of the production reference (worst relative deviation of R from the overkill solution)",
+      "fmt": "%.1e"
+    },
+    "cellConvOrdre": {
+      "value": 2.981677051460399,
+      "description": "observed order of mesh convergence of the cell problem (B1, limited by the corner singularities)",
+      "fmt": "%.2f"
+    },
+    "cellConvEcartFin": {
+      "value": 0.00012136325547196236,
+      "description": "deviation of B1 between the two finest cell meshes",
+      "fmt": "%.1e"
+    }
+  },
+  "outputs": [
+    {
+      "file": "results/reference/bloc10/convergence_maillage.csv",
+      "type": "data",
+      "sha256": "b6c30fc5f2646cc089e5214368dcf59b679b82857be7e4c510fcda6d97414f98",
+      "bytes": 648
+    },
+    {
+      "file": "results/reference/bloc10/convergence_troncature.csv",
+      "type": "data",
+      "sha256": "6c2f2597d25362227f3c66c85212e25b27c3fd6803319633671a63e260b3a099",
+      "bytes": 531
+    },
+    {
+      "file": "results/reference/bloc10/plancher_production.csv",
+      "type": "data",
+      "sha256": "aeef68ffec00a38f882931c5878d4118fa0addb280b92315110adaeadd75049e",
+      "bytes": 161
+    },
+    {
+      "file": "results/reference/bloc10/convergence_cellule.csv",
+      "type": "data",
+      "sha256": "8d931231acd312fc32b5c71901c5aba8bb0c6755e1fe53ce0a9c3e0d48346fd3",
+      "bytes": 272
+    },
+    {
+      "file": "figures/fig21_convergence_reference.pdf",
+      "type": "figure",
+      "sha256": "ae83cd254029261b86da4c5578e6b1370dc291d19ab7018652b79bc7a167e578",
+      "bytes": 34270
+    }
+  ],
+  "notes": []
+}

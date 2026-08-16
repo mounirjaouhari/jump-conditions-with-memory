@@ -1,0 +1,135 @@
+{
+  "block": "bloc9",
+  "status": "success",
+  "error": null,
+  "timestamp_utc": "2026-08-16T16:08:15.109370+00:00",
+  "duration_s": 89.02,
+  "git": {
+    "commit": "6973866f348739726f5a41bd1359aa5a8f1581c1",
+    "branch": "main",
+    "clean_tree": true,
+    "modified_sources": []
+  },
+  "config": {
+    "name": "reference",
+    "file": "config/default.yaml",
+    "sha256": "45e5efc8782a380fcafab54e26af2dbcccd19648b572179d91f9ae3f2548f3a2"
+  },
+  "physical_parameters": {
+    "mu_ratio": 6.5,
+    "rho_ratio": 3.12,
+    "visc_ratio": 0.1,
+    "phi": 0.5,
+    "e_over_h": 2.0,
+    "delta": 0.0,
+    "N_modes": 15,
+    "p_large": 1000000000000.0,
+    "solveur": "fem",
+    "fem_L": 6.0,
+    "fem_raffinement": 2
+  },
+  "block_parameters": {
+    "z_min": 0.02,
+    "z_max": 40.0,
+    "n_z_dense": 240,
+    "z_dense_max": 6.0,
+    "n_z_sparse": 35,
+    "eta": 0.08,
+    "r1_values": [
+      2.0,
+      3.0,
+      4.0,
+      6.0,
+      10.0
+    ],
+    "herglotz_r": [
+      [
+        6.5,
+        0.5
+      ],
+      [
+        6.5,
+        -0.5
+      ],
+      [
+        2.0,
+        1.0
+      ],
+      [
+        0.5,
+        2.0
+      ],
+      [
+        0.1,
+        0.05
+      ],
+      [
+        10.0,
+        3.0
+      ],
+      [
+        1.0,
+        0.001
+      ],
+      [
+        3.3,
+        -2.2
+      ]
+    ]
+  },
+  "environment": {
+    "python": "3.13.6",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "values": {
+    "herglotzResidu": {
+      "value": 1.1010381535345545e-10,
+      "description": "max relative deviation of the Herglotz identity (Im B, Im C)",
+      "fmt": "%.1e"
+    },
+    "stieltjesMuMin": {
+      "value": 6.31390799983035e-05,
+      "description": "min of the Stieltjes density μ'(z) — positivity (passivity)",
+      "fmt": "%.2e"
+    },
+    "stieltjesEta": {
+      "value": 0.08,
+      "description": "smoothing η of the Stieltjes–Perron inversion",
+      "fmt": "%.2g"
+    },
+    "stieltjesNbZ": {
+      "value": 275,
+      "description": "number of points of the z grid",
+      "fmt": "%d"
+    },
+    "stieltjesReconErrMax": {
+      "value": 3.9880125706212253,
+      "description": "max relative deviation (%) reconstruction from μ vs direct G",
+      "fmt": "%.1f"
+    }
+  },
+  "outputs": [
+    {
+      "file": "results/reference/bloc9/mesure_stieltjes.csv",
+      "type": "data",
+      "sha256": "8eca41506a38b72fd33089017e30e0bdbb0767098ad2fdcbd0a81539f880028a",
+      "bytes": 7375
+    },
+    {
+      "file": "results/reference/bloc9/reconstruction_stieltjes.csv",
+      "type": "data",
+      "sha256": "823d220bd1131164843cb4873c5ea28911367b1e85646dea9c721d5bb9eb0817",
+      "bytes": 264
+    },
+    {
+      "file": "figures/fig14_mesure_stieltjes.pdf",
+      "type": "figure",
+      "sha256": "a25334e009651f1f041f2eb9d71ac753aaaab74b3727a6cb80996f97c73ed919",
+      "bytes": 30750
+    }
+  ],
+  "notes": []
+}

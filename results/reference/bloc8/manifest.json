@@ -1,0 +1,141 @@
+{
+  "block": "bloc8",
+  "status": "success",
+  "error": null,
+  "timestamp_utc": "2026-08-16T16:08:02.271995+00:00",
+  "duration_s": 12.7,
+  "git": {
+    "commit": "6973866f348739726f5a41bd1359aa5a8f1581c1",
+    "branch": "main",
+    "clean_tree": true,
+    "modified_sources": []
+  },
+  "config": {
+    "name": "reference",
+    "file": "config/default.yaml",
+    "sha256": "45e5efc8782a380fcafab54e26af2dbcccd19648b572179d91f9ae3f2548f3a2"
+  },
+  "physical_parameters": {
+    "mu_ratio": 6.5,
+    "rho_ratio": 3.12,
+    "visc_ratio": 0.1,
+    "phi": 0.5,
+    "e_over_h": 2.0,
+    "delta": 0.0,
+    "N_modes": 15,
+    "p_large": 1000000000000.0,
+    "solveur": "fem",
+    "fem_L": 6.0,
+    "fem_raffinement": 2
+  },
+  "block_parameters": {
+    "kh": 0.6,
+    "theta_deg": 45,
+    "X": 8.0,
+    "raffinement": 3,
+    "n_periodes": 4,
+    "a_over_e_values": [
+      0.0,
+      1.0,
+      2.0
+    ],
+    "kh_courbe": [
+      0.2,
+      0.4,
+      0.6
+    ],
+    "a_over_e_min": 0.0,
+    "a_over_e_max": 2.0,
+    "n_a_courbe": 21
+  },
+  "environment": {
+    "python": "3.13.6",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "values": {
+    "champErreurAvecC": {
+      "value": 0.03184506778892526,
+      "description": "L2 error on the field, complete model",
+      "fmt": "%.1e"
+    },
+    "champErreurSansC": {
+      "value": 0.2799058374458306,
+      "description": "L2 error on the field, C omitted",
+      "fmt": "%.2f"
+    },
+    "ecartHunAzero": {
+      "value": 47.47744126562555,
+      "description": "H¹ deviation (%) near field, a = 0 e",
+      "fmt": "%.0f"
+    },
+    "ecartHunAe": {
+      "value": 8.063577319432135,
+      "description": "H¹ deviation (%) near field, a = 1 e",
+      "fmt": "%.0f"
+    },
+    "ecartHunADeuxe": {
+      "value": 33.02329126928717,
+      "description": "H¹ deviation (%) near field, a = 2 e",
+      "fmt": "%.0f"
+    },
+    "aOptimalChamp": {
+      "value": 1.0,
+      "description": "a/e minimizing the H¹ deviation (near field)",
+      "fmt": "%.2f"
+    }
+  },
+  "outputs": [
+    {
+      "file": "results/reference/bloc8/coupe_champ.csv",
+      "type": "data",
+      "sha256": "661b53ca4508a93ebeb1b4a815691afb11e1bd8f90d5dea06ba599f2cb15c255",
+      "bytes": 4682
+    },
+    {
+      "file": "figures/fig18_champs.pdf",
+      "type": "figure",
+      "sha256": "ef469007712986514fd7dc85285f9b0968106e2e68581620afa06fd0c6e0ff6c",
+      "bytes": 101233
+    },
+    {
+      "file": "results/reference/bloc8/champ_vs_a.csv",
+      "type": "data",
+      "sha256": "4bb2099ea378d43cceb31d342e85e0a9b327f792baf2405af8016a59e232310f",
+      "bytes": 6094
+    },
+    {
+      "file": "figures/fig19_champ_vs_a.pdf",
+      "type": "figure",
+      "sha256": "0be41100d2089fc2e59c6db053f3303bd912cf7e64cf4e1b5ff14ac50d112662",
+      "bytes": 132483
+    },
+    {
+      "file": "results/reference/bloc8/ecart_H1_vs_a_kh_0.2.csv",
+      "type": "data",
+      "sha256": "45a4b8b3cb03a63ee0d138ab6b4110d05486098aff4f8309580610e742bc6f38",
+      "bytes": 719
+    },
+    {
+      "file": "results/reference/bloc8/ecart_H1_vs_a_kh_0.4.csv",
+      "type": "data",
+      "sha256": "6f95a63f8c8df0e96ef39487e11092de846a7da0ea243cd93321f21a70cf2581",
+      "bytes": 692
+    },
+    {
+      "file": "results/reference/bloc8/ecart_H1_vs_a_kh_0.6.csv",
+      "type": "data",
+      "sha256": "4386c7daa8932d751e8bd1f0fae952c192c8c8ea8ac96bb992555485e903b3ae",
+      "bytes": 686
+    },
+    {
+      "file": "figures/fig20_erreur_H1_vs_a.pdf",
+      "type": "figure",
+      "sha256": "b759bcf91761ec635b38b57e73759e87459a533216cc03f3a89f624ece33dff1",
+      "bytes": 31452
+    }
+  ],
+  "notes": []
+}
