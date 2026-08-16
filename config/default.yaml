@@ -1,0 +1,244 @@
+# =============================================================================
+# Reference configuration — test case of the paper
+# =============================================================================
+# SINGLE SOURCE OF TRUTH for all parameters.
+# No physical or numerical number may be hard-coded in any script.
+#
+# To explore a variant WITHOUT touching the reference case:
+#   1. copy this file:            config/my_variant.yaml
+#   2. run:                       python run.py all --config config/my_variant.yaml
+#   3. outputs go to:             results/<config_name>/ and figures/<config_name>/
+#
+# The SHA-256 hash of this file is recorded in every run manifest:
+# a figure can therefore always be traced back to the exact configuration
+# that produced it.
+# =============================================================================
+
+meta:
+  nom: reference
+  description: >
+    Test case of the paper: steel inclusions in a rock-like viscoelastic
+    matrix. Corresponds to figures 5 to 14.
+
+# -----------------------------------------------------------------------------
+# Physical parameters (nondimensionalized: mu_m = rho_m = h = 1)
+# -----------------------------------------------------------------------------
+physique:
+  mu_ratio:   6.5     # mu_i / mu_m        (78 GPa / 12 GPa)
+  rho_ratio:  3.12    # rho_i / rho_m      (7800 / 2500 kg.m-3)
+  visc_ratio: 0.1     # omega.beta_m / mu_m
+  phi:        0.5     # h_incl / h  (nondimensional width of the inclusion)
+  e_over_h:   2.0     # e / h       (nondimensional thickness of the row)
+  # Viscous perturbation of the inclusions. The paper builds everything on the
+  # LIMIT delta -> 0: this limit is what makes the memory appear. The legacy
+  # code kept delta = 1e-3 fixed and never took the limit (D14).
+  # delta = 0 is the paper's value; the FEM solver handles it exactly.
+  delta:      0.0
+
+# -----------------------------------------------------------------------------
+# NUMERICAL parameters (discretization — not physics)
+# -----------------------------------------------------------------------------
+# Varying these values must NOT change the results significantly. If it
+# does, the computation is not converged.
+# → convergence study to be carried out: docs/DETTE_SCIENTIFIQUE.md (D3)
+numerique:
+  # --- Solver for the cell problem ------------------------------------------
+  #   fem    : Q1 finite elements on the 2D cell (cell_fem.py). CORRECT.
+  #            Validated: exact on the full layer (4e-13), independent of the
+  #            truncation L, satisfies the reciprocity lemma B_2 + C_1 = 0.
+  #   legacy : closed-form formulas inherited from common.py. WRONG — modulus
+  #            ratio inverted (D11), multimodal correction equal to zero (D4),
+  #            volume term counted twice (D5). Kept to reproduce the figures
+  #            of the first version of the paper.
+  solveur: fem
+  fem_L: 6.0            # truncation of the cell in y1 (result insensitive)
+  fem_raffinement: 2    # 1 = fast, 3 = fine (corner singularities)
+
+  n_modes: 15           # (legacy only) number of Fourier modes
+  p_large: 1.0e12       # "p -> +infinity" for B^v, C^v and the kernel tail
+
+  # --- Laplace inversion -----------------------------------------------------
+  #   standard : Bromwich K(eps + i.omega) + analytic subtraction of the tail
+  #              C_inf/(p+lambda). CORRECT (error 3.8e-4 on a closed-form case).
+  #   legacy   : K(eps - i.omega), which computes f(-t) ~ 0: error 99.8% (D3a),
+  #              and truncated where the integrand is still 0.41 (D3b).
+  laplace_convention: standard
+  laplace_omega_max: 20000.0   # integration bound (the tail is subtracted)
+  laplace_n_quad: 200000       # fine quadrature (oscillating factor e^{i.omega.t})
+  laplace_n_echantillons: 400  # actual evaluations of K (one FEM each)
+  laplace_epsilon: 1.0e-3      # Bromwich abscissa
+
+# -----------------------------------------------------------------------------
+# Block 1 — cell coefficients B(p), C(p), S(a)        → fig05, fig06
+# -----------------------------------------------------------------------------
+bloc1:
+  omega_min: 0.001
+  omega_max: 2.0
+  n_omega: 100
+  epsilon_laplace: 1.0e-6   # p = -i.omega + epsilon (Bromwich shift)
+
+# -----------------------------------------------------------------------------
+# Block 2 — memory kernels K_B(t), K_C(t)             → fig07
+# -----------------------------------------------------------------------------
+bloc2:
+  # The kernel decays like exp(-lambda.t) with lambda = mu_m/beta_m = 10:
+  # the relevant time scale is ~1, not 30. The [0, 30] window of the legacy
+  # code was dictated by nothing and drowned the kernel in its tail.
+  t_min: 0.0
+  t_max: 0.4
+  n_t: 400
+  prony_n_exp: 3            # number of internal variables
+  # (sigma, omega) grid of the right half-plane for the sector condition
+  # (S_p) of supplement S9: p = sigma + i.omega. By the symmetry p -> conj(p),
+  # omega >= 0 suffices. Each point costs one cell problem.
+  secteur_sigmas: [0.01, 0.1, 1.0, 10.0, 100.0]
+  secteur_omegas: [0.0, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0, 100.0]
+
+# -----------------------------------------------------------------------------
+# Block 3 — harmonic scattering R, T                  → fig09, fig10
+# -----------------------------------------------------------------------------
+bloc3:
+  kh_min: 0.01
+  kh_max: 0.5
+  n_kh: 50
+  theta: 0.0                # normal incidence (rad)
+  # Points where the local convergence order is measured (log-log slope of E_R
+  # between kh/2 and kh). These kh and their halves must lie in the grid.
+  kh_ordres: [0.05, 0.1, 0.2]
+
+# -----------------------------------------------------------------------------
+# Block 4 — choice of the parameter a                 → fig08, fig11
+# -----------------------------------------------------------------------------
+bloc4:
+  a_over_e_min: 0.0
+  a_over_e_max: 2.0
+  n_a_over_e: 50
+  omega_test: 0.5           # frequency of the passivity test
+  # second study: error E_R as a function of a/e
+  a_over_e_min_err: 0.3
+  a_over_e_max_err: 1.8
+  n_a_over_e_err: 61
+  kh_values: [0.05, 0.1, 0.2]
+  theta: 0.0
+  # Accuracy floor of the reference solver (relative error on R).
+  # Below it, one measures noise, not the model. Marigo warns of the trap;
+  # an earlier version of this work fell into it.
+  # Value MEASURED by block 10 (production against an overkill mesh at
+  # fixed X, worst of the (kh, theta) pairs studied) — replaces the 1.0e-4
+  # that was asserted without measurement (CHANGELOG 0.6.0).
+  plancher_reference: 2.5e-4
+  # Convergence order as a function of a: this is the strong result.
+  kh_ordre: [0.05, 0.1, 0.2, 0.3]
+  n_a_ordre: 25
+
+# -----------------------------------------------------------------------------
+# Block 5 — time-domain propagation                   → fig12, fig13, fig14
+# -----------------------------------------------------------------------------
+bloc5:
+  # The pulse must have its spectrum ENTIRELY inside the validity domain of
+  # the model (kh << 1). Gaussian of width tau0: spectral standard deviation
+  # sqrt(2)/tau0. With tau0 = 10 and omega0 = 0.25, the useful content fits
+  # within kh <= 0.8. The legacy code took tau0 = 3 and omega0 = 0.8: its
+  # spectrum extended up to kh ~ 2, outside the validity domain.
+  dt: 0.05
+  t_end: 100.0
+  t0: 35.0                  # center of the Gaussian pulse
+  tau0: 10.0                # pulse width
+  omega0: 0.25              # carrier angular frequency
+  kh_max_modele: 0.8        # beyond this, the first-order model is meaningless
+  seuil_spectre: 1.0e-3     # fraction of the spectrum maximum
+  visc_ratio_fort: 3.0      # "dissipative matrix" case of figure 12
+  visc_ratios: [0.01, 0.03, 0.1, 0.3, 1.0, 3.0]   # sweep for fig14
+
+# -----------------------------------------------------------------------------
+# Block 6 — oblique incidence: validation of the coefficient C   → fig15, fig16
+# -----------------------------------------------------------------------------
+# C enters the jump conditions only through k2^2 = k^2 sin^2(theta).
+# At theta = 0 it vanishes: ONLY oblique incidence can validate it.
+bloc6:
+  angles_deg: [30, 45, 60]
+  kh_min: 0.02
+  kh_max: 0.4
+  n_kh: 25
+  kh_figure_angles: 0.2     # frequency of the |R| vs theta figure
+  theta_max_deg: 70
+  n_theta: 25
+  # Value of C^e produced by the legacy code (modulus ratio inverted and
+  # volume term counted twice). Counter-example: a wrong C degrades the
+  # model even more than ignoring C.
+  c_herite: 13.0
+
+# -----------------------------------------------------------------------------
+# Block 7 — in which regime does the memory matter?           → fig17
+# -----------------------------------------------------------------------------
+bloc7:
+  visc_ratios: [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1.0, 3.0, 10.0]
+  kh: 0.3
+  theta_deg: 45             # oblique: both B AND C are active
+
+# -----------------------------------------------------------------------------
+# Block 8 — field maps: the near field, and the role of C      → fig18
+# -----------------------------------------------------------------------------
+bloc8:
+  # The domain must contain at least one wavelength: lambda = 2.pi/kh.
+  # At kh = 0.6: lambda = 10.5 h. We take X = 8 (i.e. 16 h wide).
+  kh: 0.6
+  theta_deg: 45             # oblique: C exists
+  X: 8.0
+  raffinement: 3
+  n_periodes: 4
+  # fig19 (analogue of Marigo's figure 5): homogenized field for these
+  # thicknesses a/e, compared against the true field.
+  a_over_e_values: [0.0, 1.0, 2.0]
+  # fig20 (analogue of Marigo's figures 6-7): H1 discrepancy as a function of
+  # a/e, for these frequencies. Each kh costs one FEM solve of the true field.
+  kh_courbe: [0.2, 0.4, 0.6]
+  a_over_e_min: 0.0
+  a_over_e_max: 2.0
+  n_a_courbe: 21
+
+# -----------------------------------------------------------------------------
+# Block 9 — passivity on the half-plane: Stieltjes measure     → fig14
+# -----------------------------------------------------------------------------
+# Reproducible proof of the passivity theorem (half-plane). G(r) = B_1(r) is a
+# Stieltjes function of the contrast: G(r) = c + ∫ dμ(z)/(z+r), μ ≥ 0. We
+# verify μ ≥ 0 by Stieltjes-Perron inversion μ'(z) = -(1/π) Im G(-z+iη),
+# and we check the representation by reconstructing G(r0)-G(r1).
+bloc9:
+  z_min: 0.02              # lower bound of the z grid (support of μ)
+  z_max: 40.0              # upper bound (the tail of μ is negligible)
+  n_z_dense: 240           # dense points on [z_min, z_dense_max] (resolve the peak)
+  z_dense_max: 6.0         # beyond this, coarse grid (μ decays)
+  n_z_sparse: 35           # coarse points on [z_dense_max, z_max]
+  eta: 0.08                # smoothing of the Stieltjes-Perron inversion (bias O(η))
+  r1_values: [2.0, 3.0, 4.0, 6.0, 10.0]   # test contrasts for the reconstruction
+  # Exact Herglotz identity (the proof of μ ≥ 0): complex sampling
+  # contrasts, in BOTH half-planes (pairs [Re, Im]).
+  herglotz_r: [[6.5, 0.5], [6.5, -0.5], [2.0, 1.0], [0.5, 2.0],
+               [0.1, 0.05], [10.0, 3.0], [1.0, 0.001], [3.3, -2.2]]
+
+# -----------------------------------------------------------------------------
+# Block 10 — convergence of the REFERENCE solver (debt A8)   → fig21 (supplement)
+# -----------------------------------------------------------------------------
+# The paper cited an "accuracy floor" of the reference (bloc4:
+# plancher_reference) without having measured it. This block MEASURES it,
+# separating the two error sources — with two DIFFERENT protocols, and this
+# is essential (see the script's docstring: the geometrically coarsened far
+# field invalidates any reference at large X):
+#   - discretization: on complex R at FIXED X = X_production (both meshes
+#     traverse the same far field), deviation from the overkill mesh
+#     raffinement_ref — the metric of fig11; this is the FLOOR;
+#   - truncation: on |R|, differences between CONSECUTIVE truncations at the
+#     production mesh; also measures the DEGRADATION beyond X = 3
+#     (the added elements are too coarse), which justifies X_production.
+bloc10:
+  raffinements: [1, 2, 3, 4]      # mesh sweep, at fixed X = X_production
+  X_values: [2.0, 3.0, 4.0, 6.0]  # consecutive truncations compared on |R|
+  kh_values: [0.05, 0.2, 0.4]     # three representative frequencies
+  theta_deg: [0.0, 45.0]          # normal AND oblique incidence (C active)
+  raffinement_ref: 5              # overkill mesh: deviations refer to it
+  raffinement_production: 2       # settings actually used by blocks 3-6
+  X_production: 3.0
+  bruit_fit: 1.0e-12              # deviations below this threshold excluded from fits
+  # Analogous table for the CELL solver (re-entrant corners: limited order).
+  cell_raffinements: [1, 2, 3, 4]

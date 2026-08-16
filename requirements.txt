@@ -1,0 +1,8 @@
+# Computational dependencies. Minimum versions tested on 2026-07-12 with
+# Python 3.13.6 / Windows 10 (voir les manifestes de results/ pour l'exact).
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+pandas>=2.0
+PyYAML>=6.0
+pytest>=7.4

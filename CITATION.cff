@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite it using the metadata below, and cite
+  the companion article once published.
+type: software
+title: >-
+  Jump conditions with memory — reproducible pipeline for the dynamic
+  homogenization of a thin row of elastic inclusions in a viscoelastic matrix
+authors:
+  - family-names: Jaouhari
+    given-names: Mounir
+    orcid: "https://orcid.org/0000-0002-2616-9889"
+    affiliation: "ENS, Hassan II University, Casablanca, Morocco"
+  - family-names: Rachid
+    given-names: Anas
+    orcid: "https://orcid.org/0000-0002-7579-7005"
+    affiliation: "ENS, Hassan II University, Casablanca, Morocco"
+  - family-names: Sbitti
+    given-names: Amine
+    orcid: "https://orcid.org/0009-0001-6753-6622"
+    affiliation: "ENSAM, Mohammed V University, Rabat, Morocco"
+  - family-names: Belemou
+    given-names: Rachid
+    orcid: "https://orcid.org/0009-0000-5421-0220"
+    affiliation: "ENS, Hassan II University, Casablanca, Morocco"
+repository-code: "https://github.com/mounirjaouhari/jump-conditions-with-memory"
+license: MIT
+keywords:
+  - homogenization
+  - metamaterials
+  - viscoelasticity
+  - wave propagation
+  - effective interfaces
+  - finite element method
+  - reproducible research
+preferred-citation:
+  type: article
+  title: >-
+    Jump conditions with memory for the dynamic homogenization of a thin row
+    of elastic inclusions in a viscoelastic matrix
+  authors:
+    - family-names: Jaouhari
+      given-names: Mounir
+      orcid: "https://orcid.org/0000-0002-2616-9889"
+    - family-names: Rachid
+      given-names: Anas
+      orcid: "https://orcid.org/0000-0002-7579-7005"
+    - family-names: Sbitti
+      given-names: Amine
+      orcid: "https://orcid.org/0009-0001-6753-6622"
+    - family-names: Belemou
+      given-names: Rachid
+      orcid: "https://orcid.org/0009-0000-5421-0220"
+  journal: Mathematics and Mechanics of Solids
+  year: 2026
+  notes: "Manuscript MMS-26-0236, revised version under review."

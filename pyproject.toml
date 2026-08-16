@@ -1,0 +1,19 @@
+[project]
+name = "fading-memory"
+version = "0.6.0"
+description = "Conditions de saut à mémoire — homogénéisation dynamique d'une rangée d'inclusions"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26", "scipy>=1.11", "matplotlib>=3.8", "pandas>=2.0", "PyYAML>=6.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Les avertissements sont des signaux : le bug D2 est resté invisible des mois
+# parce qu'un warnings.filterwarnings('ignore') les masquait tous.
+filterwarnings = ["error::numpy.exceptions.ComplexWarning"]
