@@ -63,13 +63,13 @@ in closed form, $K_C(t) = -(e/h)(\mu_i/\mu_m)\,e^{-\lambda t}$ with
 $\lambda = \mu_m/\beta_m$, and acts **only at oblique incidence**.
 
 **Passivity** (*proved, on the whole complex half-plane*): an exact Herglotz
-identity, $\operatorname{Im} B(r) = -\operatorname{Im} r
+identity, $\mathrm{Im}\, B(r) = -\mathrm{Im}\, r
 \int_{\Omega_i}|\nabla V^{(1)}|^2$ (and $+$ for $C$), shows that $-B$ and
 $C$ are Herglotz functions of the contrast; by the Nevanlinna representation
 their Stieltjes measures are **positive**, whence
-$\operatorname{Re}[p\widehat K_B] \ge 0$ and
-$\operatorname{Re}[p\widehat K_C] \le 0$ for all
-$\operatorname{Re}(p) > 0$, and the complete monotonicity of both exact
+$\mathrm{Re}\,[p\widehat K_B] \ge 0$ and
+$\mathrm{Re}\,[p\widehat K_C] \le 0$ for all
+$\mathrm{Re}\,(p) > 0$, and the complete monotonicity of both exact
 kernels (Bernstein) as a corollary.
 
 **Every claim has a numerical witness in this repository:**
